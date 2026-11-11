@@ -1,0 +1,200 @@
+/* Bridge Meter */
+
+.cbu-bar,
+.cbu-panel {
+    --cbu-fill: var(--SmartThemeQuoteColor, #7aa2f7);
+    --cbu-track: color-mix(in srgb, var(--SmartThemeBodyColor, #ccc) 18%, transparent);
+    --cbu-muted: color-mix(in srgb, var(--SmartThemeBodyColor, #ccc) 65%, transparent);
+    --cbu-warn: #e0a030;
+    --cbu-danger: #e05555;
+}
+
+/* 막대 */
+
+.cbu-meter {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--cbu-track);
+    overflow: hidden;
+}
+
+.cbu-meter-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--cbu-fill);
+    transition: width 0.3s ease;
+}
+
+.cbu-warn .cbu-meter-fill {
+    background: var(--cbu-warn);
+}
+
+.cbu-danger .cbu-meter-fill {
+    background: var(--cbu-danger);
+}
+
+.cbu-message.cbu-warn,
+.cbu-bar-note.cbu-warn {
+    color: var(--cbu-warn);
+}
+
+.cbu-message.cbu-danger,
+.cbu-bar-note.cbu-danger,
+.cbu-danger .cbu-window-value,
+.cbu-danger .cbu-bar-value {
+    color: var(--cbu-danger);
+}
+
+.cbu-warn .cbu-window-value,
+.cbu-warn .cbu-bar-value {
+    color: var(--cbu-warn);
+}
+
+/* 입력창 위 한 줄 */
+
+.cbu-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 14px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3px 10px;
+    font-size: 0.78em;
+    line-height: 1.4;
+    color: var(--cbu-muted);
+    cursor: pointer;
+    user-select: none;
+}
+
+.cbu-bar[hidden] {
+    display: none;
+}
+
+.cbu-bar.cbu-loading {
+    opacity: 0.6;
+}
+
+.cbu-bar-title {
+    font-weight: 600;
+}
+
+.cbu-bar-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.cbu-bar-item .cbu-meter {
+    width: 48px;
+    height: 4px;
+}
+
+.cbu-bar-value {
+    font-variant-numeric: tabular-nums;
+    color: var(--SmartThemeBodyColor, inherit);
+}
+
+/* 설정 패널 */
+
+.cbu-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 6px 0 10px;
+}
+
+.cbu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cbu-section-title {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--cbu-muted);
+}
+
+.cbu-window {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cbu-window-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.cbu-window-value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.cbu-window-reset,
+.cbu-last,
+.cbu-updated,
+.cbu-stat-label {
+    font-size: 0.8em;
+    color: var(--cbu-muted);
+}
+
+.cbu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.cbu-stat {
+    padding: 6px 8px;
+    border: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.3));
+    border-radius: 6px;
+}
+
+.cbu-stat-value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+}
+
+.cbu-message {
+    font-size: 0.9em;
+    color: var(--cbu-muted);
+}
+
+.cbu-updated {
+    text-align: right;
+}
+
+.cbu-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 8px;
+    font-size: 0.9em;
+}
+
+/* 실리태번의 .menu_button은 폭이 min-content라서 한글이 한 글자씩 줄바꿈된다. */
+#cbu_refresh {
+    width: fit-content;
+    padding: 3px 12px;
+    white-space: nowrap;
+}
+
+/* 한글이 단어 중간에서 끊기지 않게 한다. */
+.cbu-settings,
+.cbu-bar {
+    word-break: keep-all;
+}
+
+.cbu-settings .checkbox_label {
+    margin-top: 8px;
+}
+
+#cbu_refresh.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
